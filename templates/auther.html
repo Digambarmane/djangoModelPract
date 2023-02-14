@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .sub{color: white;
+        background-color: chocolate}
+        .sub:hover{font-size:20px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+<form method="post" novalidate>
+    {% csrf_token %}
+   {{ form.as_p }}
+    <input type="submit"class="sub">
+</form><br><br>
+
+<table border="1px">
+    <tr>
+        <th>id</th>
+        <th>Aname</th>
+        <th>Bname</th>
+        <th> Age</th>
+
+    </tr>
+    {% for at in auth %}
+        <tr>
+        <td>{{ at.id }}</td>
+        <td>{{ at.aname}}</td>
+        <td>{{ at.bname }}</td>
+        <td>{{ at.age }}</td>
+
+        </tr>
+    {% endfor %}
+</table>
+{% if messages %}
+    {% for mes in messages %}
+        {{ mes }}
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
